@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- vanoklinik.mitraklinik tree view -->
+    <record id="vanoklinik_mitraklinik_view_tree" model="ir.ui.view">
+        <field name="name">Daftar Mitra Obat</field>
+        <field name="model">vanoklinik.mitraklinik</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name" />
+                <field name="alamat" />
+                <field name="no_telp" />
+                <field name="obat_id" widget="many2many_tags"/>
+               
+            </tree>
+        </field>
+    </record>
+
+    <!-- vanoklinik.mitraklinik form view -->
+    <record id="vanoklinik_mitraklinik_view_form" model="ir.ui.view">
+        <field name="name">Form Mitra Klinik</field>
+        <field name="model">vanoklinik.mitraklinik</field>
+        <field name="arch" type="xml">
+            <form string="Mitra Klinik">
+                <sheet>
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="name" />
+                        <field name="alamat" />
+                        <field name="no_telp" />
+                    </group>
+                    <group name="obat" string="Obat">
+                        <field name="obat_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- vanoklinik.mitraklinik action window -->
+    <record id="vanoklinik_mitraklinik_action" model="ir.actions.act_window">
+        <field name="name">Mitra Klinik</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vanoklinik.mitraklinik</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="vanoklinik_mitraklinik_menu_act" 
+        name="Mitra Perusahaan Obat" 
+        parent="vanoklinik_mitraklinik_menu_categ" 
+        action="vanoklinik_mitraklinik_action" 
+        sequence="10"/>
+
+</odoo>

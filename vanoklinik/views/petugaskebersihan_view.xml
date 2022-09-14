@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- vanoklinik.petugaskebersihan inherit tree view -->
+    <record id="vanoklinik_petugaskebersihan_view_tree_inherit" model="ir.ui.view">
+        <field name="name">Daftar Petugas Kebersihan</field>
+        <field name="model">vanoklinik.petugaskebersihan</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="vanoklinik_pegawai_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="id_petugaskebersihan"/>              
+            </xpath>
+            
+        </field>
+    </record>
+
+    <!-- vanoklinik.petugaskebersihan inherit form view -->
+    <record id="vanoklinik_petugaskebersihan_view_form_inherit" model="ir.ui.view">
+        <field name="name">Form Petugas Kebersihan</field>
+        <field name="model">vanoklinik.petugaskebersihan</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="vanoklinik_pegawai_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet//group[1]" position="after">
+                <group name="id" string="ID">
+                    <field name="id_petugaskebersihan"/>                    
+                </group>                
+            </xpath>
+            <xpath expr="//field[@name='alamat']" position="attributes">
+                <attribute name="string">Alamat</attribute>                
+            </xpath>
+            <xpath expr="//field[@name='j_kelamin']" position="attributes">
+                <attribute name="string">Jenis Kelamin</attribute>                
+            </xpath>
+        </field>
+    </record>
+
+    <!-- vanoklinik.petugaskebersihan action window -->
+    <record id="vanoklinik_petugaskebersihan_action" model="ir.actions.act_window">
+        <field name="name">Petugas Kebersihan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vanoklinik.petugaskebersihan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="vanoklinik_petugaskebersihan_menu_act"
+              name="Petugas Kebersihan"
+              parent="vanoklinik_pegawai_menu_categ"
+              action="vanoklinik_petugaskebersihan_action"
+              sequence="30"/>
+
+</odoo>

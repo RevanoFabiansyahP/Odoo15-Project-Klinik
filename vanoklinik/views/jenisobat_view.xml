@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- vanoklinik.jenisobat tree view -->
+    <record id="vanoklinik_jenisobat_view_tree" model="ir.ui.view">
+        <field name="name">vanoklinik.jenisobat.view.tree</field>
+        <field name="model">vanoklinik.jenisobat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="kode_jenis"/>
+                <field name="kode_lemari"/>
+                <field name="jml_item"/>
+                <field name="daftar"/> 
+            </tree>
+        </field>
+    </record>
+
+    <!-- vanoklinik.jenisobat form view -->
+    <record id="vanoklinik_jenisobat" model="ir.ui.view">
+        <field name="name">vanoklinik.jenisobat.view.form</field>
+        <field name="model">vanoklinik.jenisobat</field>
+        <field name="arch" type="xml">
+            <form string="Jenis Obat">
+                <sheet>
+                    <group name="Jenis" string="Posisi Jenis">
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="kode_jenis"/>
+                        <field name="jml_item"/>
+                    </group>
+
+                    <group name="Lemari" string="Posisi Obat">
+                        <field name="kode_lemari"/>
+                        <field name="obat_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- vanoklinik.jenisobat action window -->
+    <record id="vanoklinik_jenisobat_action" model="ir.actions.act_window">
+        <field name="name">Jenis Obat</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vanoklinik.jenisobat</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="vanoklinik_jenisobat_menu_act"
+        name="Jenis Obat"
+        parent="vanoklinik_obat_menu_categ"
+        action="vanoklinik_jenisobat_action"
+        sequence="10"/>
+
+</odoo>

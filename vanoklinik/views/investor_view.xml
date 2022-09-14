@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- res.partner inherit form view -->
+    <record id="res_partner_investor_view_form_inherit" model="ir.ui.view">
+        <field name="name">Form Investor</field>
+        <field name="model">res.partner</field>
+        <field name="mode">extension</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="is_investor"/>               
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- res.partner inherit search view -->
+    <record id="view_id" model="ir.ui.view">
+        <field name="name">res.partner.direksi.inherit.view.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+           <field name="parent_id" position='after'>
+                <filter name="investor" string="Investor" domain="[('is_investor', '=', True)]"/>
+            </field>
+            
+        </field>
+    </record>
+
+    <!-- res.partner action window -->
+    <record id="res_partner_investor_action" model="ir.actions.act_window">
+        <field name="name">Investor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">
+            {
+                'search_default_investor':1,
+                'default_is_investor':True
+            }
+        </field>
+    </record>
+    
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="vanoklinik_investor_menu_act" 
+              name="Investor"
+              parent="vanoklinik_respartner__menu_categ" 
+              action="res_partner_investor_action" 
+              sequence="20"/>
+
+</odoo>

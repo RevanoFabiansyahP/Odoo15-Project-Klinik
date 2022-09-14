@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="input_obat_view_form_wizzard" model="ir.ui.view">
+    <field name="name">Input Obat</field>
+    <field name="model">vanoklinik.inputobat</field>
+    <field name="arch" type="xml">
+        <form string="Form Input Obat">
+            <group>
+                <field name="obat_id"/>
+                <field name="jumlah"/>
+            </group>
+
+            <footer>
+                <button name="button_input_obat" type= "object" string="Input Obat" class="btn btn-warning"/>
+                <button string="Cancel" special="cancel" class="btn btn-danger"/>
+            </footer>
+
+        </form>
+    </field>
+</record>
+
+
+<record id="input_obat_action_wizzard" model="ir.actions.act_window">
+    <field name="name">Input Stok Obat</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">vanoklinik.inputobat</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="input_obat_view_form_wizzard"/>
+    <field name="target">new</field>
+</record>
+
+<menuitem id="input_obat_menu_action_wizard"
+          name="Input Stok Obat" 
+          parent="vanoklinik_obat_menu_categ"
+          action="input_obat_action_wizzard"
+          sequence="30"/>
+
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_penjualanobat_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <h2>
+                        <center><b>--- STRUK APOTEK VANO KLINIK ---</b></center>
+                    </h2>
+                    <t t-foreach="docs" t-as="d">
+                        <div class="row">
+                            <div class="col-2">No Struk           :</div>
+                            <div class="col-10"><span t-field="d.name"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">Kasir              :</div>
+                            <div class="col-10"><span t-field="d.petugasapotek_id"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">Tanggal Transaksi  :</div>
+                            <div class="col-10"><span t-field="d.tgl_penjualan"/></div>
+                        </div>
+                        <div style="text-align:left;"><b>-------------------------------</b></div>
+                        <div class="row">
+                            <div class="col-2">Nama Pelanggan     :</div>
+                            <div class="col-10"><span t-field="d.nama_pembeli"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">Total Pembayaran    :</div>
+                            <div class="col-10"><span t-field="d.total_bayar"/></div>
+                        </div>
+                        <br/>
+                        <div style="text-align:center;"><b>--- Obat Yang Dibeli ---</b></div>
+                        <style>
+                            table.center {
+                                            margin-left: auto; 
+                                            margin-right: auto;
+                                        }
+                        </style>
+                        <table class="center" style="width:50%;">
+                            <tr>
+                                <th>Nama Obat</th>
+                                <th>Jumlah</th>
+                                <th>Harga</th>
+                                <th>Subtotal</th>
+                            </tr>
+                            <t t-foreach="d.detailpenjualanobat_ids" t-as="ds">
+                                <tr>
+                                    <td><span t-field="ds.obat_id.name"/></td>
+                                    <td><span t-field="ds.qty"/></td>
+                                    <td><span t-field="ds.harga_satuan"/></td>
+                                    <td><span t-field="ds.subtotal"/></td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><b>Total :</b></td>
+                                <td><span t-field="d.total_bayar"/></td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div style="text-align:center;">________________________________________________________________________________________________________________________________________________________</div>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

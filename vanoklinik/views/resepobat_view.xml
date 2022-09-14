@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- vanoklinik.resepobat tree view -->
+    <record id="vanoklinik_resepobat_view_tree" model="ir.ui.view">
+        <field name="name">Penebusan Resep Obat</field>
+        <field name="model">vanoklinik.resepobat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="no_antrian"/>
+                <field name="umur"/>
+                <field name="j_kelamin"/>
+                <field name="keluhan"/>
+                <field name="dokter_id"/>
+                <field name="pasien_id"/>
+                <field name="tgl_penjualan"/>
+                <field name="total_bayar"/>
+                <field name="petugasapotek_id"/>  
+                <field name="state" 
+                       decoration-danger="state == 'draft'"
+                       decoration-muted="state == 'cancelled'"
+                       decoration-info="state == 'confirm'"
+                       decoration-primary="state == 'done'"
+                       widget = "badge"/>        
+            </tree>
+        </field>
+    </record>
+
+    <!-- vanoklinik.resepobat form view -->
+    <record id="vanoklinik_resepobat_view_form" model="ir.ui.view">
+        <field name="name">Form Penebusan Resep Obat</field>
+        <field name="model">vanoklinik.resepobat</field>
+        <field name="arch" type="xml">
+            <form string="Form Penebusan Resep Obat">
+
+                <header>
+                <button name="action_confirm" type="object" string="Confirm" class="btn btn-primary" states="draft"/>
+                <button name="action_done" type="object" string="Done" class="btn btn-primary" states="confirm"/>
+                <button name="action_cancel" type="object" string="Cancel" class="btn btn-primary" states ="confirm" confirm="Anda yakin untuk membatalkan pemesanan ini ?"/>
+                <button name="action_draft" type="object" string="Kembali" class="btn btn-primary" states ="cancelled" confirm="Anda yakin untuk mengedit pemesanan ini ?"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                            <field name="no_antrian" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                            <field name="umur" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                            <field name="j_kelamin" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="petugasapotek_id" required="1" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>  
+                            <field name="tgl_penjualan" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                            <field name="total_bayar"  attrs="{'readonly' : [('state', '!=', 'draft')]}"/>  
+                        </group>
+                        <group>
+                            <field name="keluhan" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                            <field name="dokter_id" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                            <field name="pasien_id" attrs="{'readonly' : [('state', '!=', 'draft')]}"/>
+                        </group>
+                    </group>
+                    <group name="daftarobat" string="Daftar Obat">
+                        <field name="tebusobat_ids">
+                            <tree editable='bottom'>
+                                <field name="obat_id"/>
+                                <field name="harga_satuan"/>
+                                <field name="qty"/>
+                                <field name="subtotal" sum="Total"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <!-- vanoklinik.resepobat action window -->
+    <record id="vanoklinik_resepobat_action" model="ir.actions.act_window">
+        <field name="name">Penebusan resep Obat</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vanoklinik.resepobat</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem
+        id="vanoklinik_resepobat_menu_act"
+        name="Penebusan Resep Obat"
+        parent="vanoklinik_apotek_menu_categ"
+        action="vanoklinik_resepobat_action"
+        sequence="20"/>
+
+</odoo>

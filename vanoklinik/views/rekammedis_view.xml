@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <!-- vanoklinik.rekammedis tree view -->
+    <record id="vanoklinik_rekammedis_view_tree" model="ir.ui.view">
+        <field name="name">Rekam Medis Pasien</field>
+        <field name="model">vanoklinik.rekammedis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="no_antrian"/>
+                <field name="name" />
+                <field name="umur"/>
+                <field name="tinggi"/>
+                <field name="berat"/>
+                <field name="j_kelamin" />
+                <field name="keluhan"/> 
+                <field name="dokter_id" />
+                <field name="pasien_id" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- vanoklinik.rekammedis form view -->
+    <record id="vanoklinik_rekammedis_view_form" model="ir.ui.view">
+        <field name="name">Form Rekam Medis</field>
+        <field name="model">vanoklinik.rekammedis</field>
+        <field name="arch" type="xml">
+            <form string="Rekam Medis">
+                <sheet>
+                    <group>
+                        <group name="Data Diri" string="Data Pasien">
+                            <!-- Add your fields here -->
+                                <field name="name" required="1"/>
+                                <field name="umur"/>
+                                <field name="tinggi"/>
+                                <field name="berat"/>
+                                <field name="j_kelamin" required="1"/>
+                                <field name="no_antrian"/>
+                        </group>
+                            <group name="Keluhan" string="Keluhan Dan Riwayat Penyakit">
+                                <field name="keluhan" required="1"/>
+                            </group>
+                            <group name="Dokter" string="Dokter Yang Menangani">
+                                <field name="dokter_id" required="1"/>
+                            </group>
+                            <group name="Rujukan" string="Rujukan Dari">
+                                <field name="pasien_id" required="1"/>
+                            </group>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- vanoklinik.rekammedis action window -->
+    <record id="vanoklinik_rekammedis_action" model="ir.actions.act_window">
+        <field name="name">Rekam Medis</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vanoklinik.rekammedis</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem
+        id="vanoklinik_rekammedis_menu_act"
+        name="Rekam Medis Pasien"
+        parent="vanoklinik_pasien_menu_categ"
+        action="vanoklinik_rekammedis_action"
+        sequence="20"/>
+
+</odoo>

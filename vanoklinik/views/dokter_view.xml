@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <!-- vanoklinik.dokter tree view -->
+    <record id="vanoklinik_dokter_view_tree" model="ir.ui.view">
+        <field name="name">Daftar Dokter</field>
+        <field name="model">vanoklinik.dokter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="id_dokter"/>
+                <field name="name"/>
+                <field name="spesialis"/>
+                <field name="alamat"/>
+                <field name="j_kelamin"/>
+                <field name="tgl_lahir"/>  
+                <field name="pictures"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- vanoklinik.dokter form view -->
+    <record id="vanoklinik_dokter_view_form" model="ir.ui.view">
+        <field name="name">Form Dokter</field>
+        <field name="model">vanoklinik.dokter</field>
+        <field name="arch" type="xml">
+            <form string="Dokter">
+                <sheet>
+                    <group name="Data Diri" string="Data Dokter">
+                        <!-- Add your fields here -->
+                        <field name="name"/>
+                        <field name="alamat"/>
+                        <field name="j_kelamin" required="1"/>
+                        <field name="tgl_lahir"/> 
+                    </group>
+
+                    <group name="Spesialis" string="Spesialis">
+                        <field name="spesialis" />
+                    </group>
+
+                    <group name="ID Dokter" string="ID Dokter">
+                        <field name="id_dokter" />
+                    </group>
+                    <group name="Gambar Dokter" string="Input Gambar Dokter">
+                        <field name="pictures" widget="image" class="oe_left oe_avatar" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;pictures&quot;}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- vanoklinik.dokter kanban view -->
+    <record id="vanoklinik_dokterview_kanban" model="ir.ui.view">
+        <field name="name">vanoklinik.dokter.view.kanban</field>
+        <field name="model">vanoklinik.dokter</field>
+        <field name="arch" type="xml">
+            <kanban string="Kanban Description">
+                <!-- Add your fields here -->
+                <field name="name"/>
+                <field name="pictures"/>
+                <field name="id"/>
+                 <templates>
+
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img alt="Image" t-att-src="kanban_image('vanoklinik.dokter', 'pictures', record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                            <strong><field name="name"/></strong>
+                                    </li>
+                                    <li class="mb4">
+                                            Spesialis: 
+                                            <field name="spesialis"/>
+                                    </li>
+                                    <li class="mb4">
+                                            Jenis Kelamin: 
+                                            <field name="j_kelamin"/>
+                                    </li>
+                                    <li class="mb4">
+                                            Alamat: 
+                                            <field name="alamat"/>
+                                    </li>
+                                    <li class="mb4">
+                                            Tanggal lahir: 
+                                            <field name="tgl_lahir"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- vanoklinik.obat action window -->
+    <record id="vanoklinik_dokter_action" model="ir.actions.act_window">
+        <field name="name">Daftar Dokter</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vanoklinik.dokter</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem
+        id="vanoklinik_dokter_menu_act"
+        name="Daftar Dokter"
+        parent="vanoklinik_pegawai_menu_categ"
+        action="vanoklinik_dokter_action"
+        sequence="10"/>
+
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <!-- vanoklinik.layanan tree view -->
+    <record id="vanoklinik_layanan_view_tree" model="ir.ui.view">
+        <field name="name">Daftar Layanan</field>
+        <field name="model">vanoklinik.layanan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name" />
+                <field name="harga_jasa"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- vanoklinik.layanan form view -->
+    <record id="vanoklinik_layanan_view_form" model="ir.ui.view">
+        <field name="name">Form Layanan</field>
+        <field name="model">vanoklinik.layanan</field>
+        <field name="arch" type="xml">
+            <form string="Layanan">
+                <sheet>
+                    <group name="layanan" string="Layanan">
+                        <!-- Add your fields here -->
+                        <field name="name" />
+                        <field name="harga_jasa" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- vanoklinik.layanan action window -->
+    <record id="vanoklinik_layanan_action" model="ir.actions.act_window">
+        <field name="name">Daftar Layanan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vanoklinik.layanan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem
+        id="vanoklinik_layanan_menu_act"
+        name="Layanan Klinik"
+        parent="vanoklinik_menu_root"
+        action="vanoklinik_layanan_action"
+        sequence="30"/>
+
+</odoo>

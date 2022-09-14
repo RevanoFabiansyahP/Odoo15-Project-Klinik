@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    <menuitem id="vanoklinik_menu_root" 
+              name="Klinik Vanhealty" 
+              sequence="10"/>
+    
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="vanoklinik_respartner__menu_categ" 
+              name="Pemilik Klinik" 
+              parent="vanoklinik_menu_root" 
+              sequence="10"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="vanoklinik_obat_menu_categ" 
+              name="Data Obat" 
+              parent="vanoklinik_menu_root" 
+              sequence="20"/>
+
+     <!-- This Menu Item Must have a parent
+     <menuitem id="vanoklinik_layanan_menu_categ" 
+               name="Layanan Klinik" 
+               parent="vanoklinik_menu_root" 
+               sequence="30"/> -->
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="vanoklinik_pegawai_menu_categ" 
+              name="Pegawai" 
+              parent="vanoklinik_menu_root" 
+              sequence="40"/>
+    
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="vanoklinik_mitraklinik_menu_categ" 
+              name="Mitra Klinik" 
+              parent="vanoklinik_menu_root" 
+              sequence="50"/>
+    
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="vanoklinik_pasien_menu_categ" 
+              name="Pasien" 
+              parent="vanoklinik_menu_root" 
+              sequence="60"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="vanoklinik_apotek_menu_categ" 
+              name="Apotek24" 
+              parent="vanoklinik_menu_root" 
+              sequence="70"/>
+
+</odoo>

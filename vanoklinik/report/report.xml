@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- obat.xlsx -->
+    <record id="report_obat_xlsx" model="ir.actions.report">
+        <field name="name">Obat Excel</field>
+        <field name="model">vanoklinik.obat</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">vanoklinik.report_obat_xlsx</field>
+        <field name="report_file">vanoklinik.report_obat_xlsx</field>
+        <field name="binding_model_id" ref="model_vanoklinik_obat"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- penjualanobat.xlsx -->
+    <record id="report_penjualanobat_xlsx" model="ir.actions.report">
+        <field name="name">Penjualan Excel</field>
+        <field name="model">vanoklinik.penjualanobat</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">vanoklinik.report_penjualanobat_xlsx</field>
+        <field name="report_file">vanoklinik.report_penjualanobat_xlsx</field>
+        <field name="binding_model_id" ref="model_vanoklinik_penjualanobat"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- penjualanobat.pdf -->
+    <record id="report_penjualanobat_pdf" model="ir.actions.report">
+        <field name="name">Cetak Penjualan PDF</field>
+        <field name="model">vanoklinik.penjualanobat</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vanoklinik.report_penjualanobat_pdf</field>
+        <field name="report_file">vanoklinik.report_penjualanobat_pdf</field>
+        <field name="binding_model_id" ref="model_vanoklinik_penjualanobat"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- resepobat.xlsx -->
+    <record id="report_resepobat_xlsx" model="ir.actions.report">
+        <field name="name">Resep ObatExcel</field>
+        <field name="model">vanoklinik.resepobat</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">vanoklinik.report_resepobat_xlsx</field>
+        <field name="report_file">vanoklinik.report_resepobat_xlsx</field>
+        <field name="binding_model_id" ref="model_vanoklinik_resepobat"/>
+        <field name="binding_type">report</field>
+    </record>
+
+     <!-- resepobat.pdf -->
+     <record id="report_resepobat_pdf" model="ir.actions.report">
+        <field name="name">Struk Resep Obat PDF</field>
+        <field name="model">vanoklinik.resepobat</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vanoklinik.report_resepobat_pdf</field>
+        <field name="report_file">vanoklinik.report_resepobat_pdf</field>
+        <field name="binding_model_id" ref="model_vanoklinik_resepobat"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
